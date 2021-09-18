@@ -22,6 +22,7 @@
                         <div class="form-group">
                             <label for="tipo_llamada" class="col-form-label">Tipo llamada:</label>
                             <select wire:model.defer="tipo_llamada" id="inputState" class="form-control">
+                                <option selected> Seleccione</option>
                                 @foreach ($tipos_llamadas as $item)
                                     <option value="{{ $item->tipo_llamada }}">{{ $item->tipo_llamada }}</option>
                                 @endforeach
@@ -30,6 +31,7 @@
                         <div class="form-group">
                             <label for="agente" class="col-form-label">Agente:</label>
                             <select wire:model.defer="agente" id="inputState" class="form-control">
+                                <option selected> Seleccione</option>
                                 @foreach ($agentes as $item)
                                     <option value="{{ $item->primer_nombre }} {{ $item->primer_apellido }}">
                                         {{ $item->primer_nombre }} {{ $item->primer_apellido }}</option>
