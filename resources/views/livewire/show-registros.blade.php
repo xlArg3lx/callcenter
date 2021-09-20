@@ -41,8 +41,6 @@
                                     @endif
                                 @endif
                             @endif
-
-
                         </td>
                         <td>{{ $item->agente }}</td>
                         <td>{{ $item->observaciones }}</td>
