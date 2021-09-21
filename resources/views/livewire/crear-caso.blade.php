@@ -3,7 +3,8 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearCaso" data-whatever="@mdo"><i
             class="bi bi-plus-circle"></i> Crear nuevo caso</button>
 
-    <div class="modal fade" id="crearCaso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="crearCaso" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -13,7 +14,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="submit">
+                    <form action="">
                         @csrf
                         <div class="form-group">
                             <label for="fecha" class="col-form-label">Fecha:</label>
@@ -25,6 +26,9 @@
                             <input required wire:model.defer="numero_orden" type="number" name="numero_orden"
                                 class="form-control" id="numero_orden">
                             </select>
+                            @error('numero_orden')
+                                <span style="color: red" class="text-red-500 text-xs italic">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="agente" class="col-form-label">Paciente:</label>
@@ -41,7 +45,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Cerrar</button>
-                    <button wire:click.defer="CrearCaso" id="envio" type="submit" class="btn btn-primary"><i
+                    <button wire:click="CrearCaso" id="envio" type="button" class="btn btn-primary"><i
                             class="bi bi-folder-check"></i> Guardar
                         registro</button>
                 </div>

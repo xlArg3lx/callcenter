@@ -14,5 +14,6 @@ class ShowCasos extends Component
             'casos' => Casos::all(),
             'llamadas' => Llamadas::all(),
         ]);
+        $this->dispatchBrowserEvent('close-alert-caso');
     }
 }

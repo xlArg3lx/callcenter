@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CerrarCaso;
+use App\Models\Agentes;
+use App\Models\Llamadas;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,12 @@ use App\Http\Controllers\CerrarCaso;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $agentes = Agentes::all();
+    $agente = Llamadas::where('agente', 'Keyla Roca')->count();
+    $agente_dos = Llamadas::where('agente', 'Paula Roca')->count();
+    $agente_tres = Llamadas::where('agente', 'Keren Bermudez')->count();
+    $agente_cuatro = Llamadas::where('agente', 'Argenedis Alvarez')->count();
+    return view('welcome', compact('agentes', 'agente', 'agente_dos', 'agente_tres', 'agente_cuatro'));
 });
 
 Route::get('/casos', function() {

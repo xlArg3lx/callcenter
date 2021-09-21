@@ -5,6 +5,7 @@ use App\Models\Llamadas;
 use App\Models\Agentes;
 use App\Models\TiposLlamadas;
 use Livewire\Component;
+use Carbon\Carbon;
 
 class NuevoRegistro extends Component
 {
@@ -12,12 +13,15 @@ class NuevoRegistro extends Component
 
     public function NuevoRegistro()
     {
-        Llamadas::create([
-            'fecha' => $this->fecha,
-            'tipo_llamada' => $this->tipo_llamada,
-            'agente' => $this->agente,
-            'observaciones' => $this->observaciones
+        $validateData = $this->validate([
+            'fecha' => 'required',
+            'tipo_llamada' => 'required',
+            'agente' => 'required',
+            'observaciones' => 'required',
         ]);
+
+        Llamadas::create($validateData);
+
         $this->dispatchBrowserEvent('close-modal-registro');
         session()->flash('message', 'Registro ingresado con éxito.');
         return redirect()->to('/');
@@ -29,6 +33,7 @@ class NuevoRegistro extends Component
             'llamadas' => Llamadas::all(),
             'agentes' => Agentes::all(),
             'tipos_llamadas' => TiposLlamadas::all(),
+            'today' => Carbon::now()->format('Y-m-d')
         ]);
     }
 }
