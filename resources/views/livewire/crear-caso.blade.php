@@ -13,11 +13,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form wire:submit.prevent="submit">
+                        @csrf
                         <div class="form-group">
                             <label for="fecha" class="col-form-label">Fecha:</label>
-                            <input required wire:model.defer="fecha" type="date" name="fecha" class="form-control"
-                                id="fecha">
+                            <input value="{{ $today }}" required readonly type="text" name="fecha"
+                                class="form-control" id="fecha">
                         </div>
                         <div class="form-group">
                             <label for="tipo_llamada" class="col-form-label">Número órden:</label>
@@ -40,7 +41,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Cerrar</button>
-                    <button wire:click="CrearCaso" type="button" class="btn btn-primary"><i
+                    <button wire:click.defer="CrearCaso" id="envio" type="submit" class="btn btn-primary"><i
                             class="bi bi-folder-check"></i> Guardar
                         registro</button>
                 </div>
@@ -49,7 +50,27 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    let botonEnvio = document.getElementById('envio');
+    let numero_orden = document.getElementById('numero_orden');
+    let paciente = document.getElementById('paciente');
+    let observaciones = document.getElementById('observaciones');
+
+    botonEnvio.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        if (observaciones.value === '') {
+            observaciones.focus();
+        }
+        if (paciente.value === '') {
+            paciente.focus();
+        }
+        if (numero_orden.value === '') {
+            numero_orden.focus();
+        }
+    })
+
     window.addEventListener('close-modal-caso', event => {
         $('#crearCaso').modal('hide');
     })

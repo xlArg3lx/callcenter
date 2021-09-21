@@ -1,4 +1,10 @@
 <div>
+    @if (session()->has('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    @include('modal_confirm')
     <div class="table-responsive">
         <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
             <thead>
@@ -36,14 +42,15 @@
                                     {{ $item->estado }}
                                 </span>
                             @else
-                                <span class="badge bg-warning text-dark">{{ $item->estado }}</span>
+                                <span class="badge bg-success text-dark">{{ $item->estado }}</span>
                             @endif
                         </td>
                         <td>{{ $item->observaciones }}</td>
                         <td>
-                            <button type="button" class="btn btn-success">
-                                <i class="bi bi-hand-thumbs-up"></i>
-                            </button>
+                            <a title="Editar" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"
+                                class=" btn btn-success waves-effect waves-light"> <i class="bi bi-hand-thumbs-up">
+                                </i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

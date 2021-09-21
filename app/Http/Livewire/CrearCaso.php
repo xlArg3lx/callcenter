@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Casos;
 use Livewire\Component;
+use Carbon\Carbon;
 
 class CrearCaso extends Component
 {
@@ -11,8 +12,10 @@ class CrearCaso extends Component
     public $fecha, $numero_orden, $paciente, $estado, $observaciones;
 
     public function CrearCaso(){
+
+        $today = Carbon::now()->format('Y-m-d');
         Casos::create([
-            'fecha' => $this->fecha,
+            'fecha' => $today,
             'numero_orden' => $this->numero_orden,
             'paciente' => $this->paciente,
             'estado' => 'En proceso',
@@ -31,6 +34,8 @@ class CrearCaso extends Component
 
     public function render()
     {
-        return view('livewire.crear-caso');
+        return view('livewire.crear-caso', [
+            'today' => Carbon::now()->format('Y-m-d')
+        ]);
     }
 }
