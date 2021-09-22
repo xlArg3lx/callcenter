@@ -19,14 +19,12 @@
                         <div class="form-group">
                             <label for="seguimiento" class="col-form-label">Observaciones adicionales:</label>
                             <textarea class="form-control" name="seguimiento" id="seguimiento"></textarea>
-                            <input name="seguimiento" type="text">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a type="submit" class="btn btn-danger">Cerrar caso</a>
-                        <button type="submit"> JKHSKJDF</button>
+                        <button type="submit" class="btn btn-success"> Cerrar caso</button>
                     </div>
                 </form>
             </div>
