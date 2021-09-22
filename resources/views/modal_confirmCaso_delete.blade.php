@@ -15,7 +15,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a type="button" class="btn btn-danger" href="/borrar_caso/{{ $item->id }}">Cerrar caso</a>
+                    <a type="button" class="btn btn-danger" href="/borrar_caso/{{ $item->id }}">Si, deseo
+                        eliminar</a>
                 </div>
             </div>
         </div>
