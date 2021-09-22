@@ -33,12 +33,14 @@
                         <div class="form-group">
                             <label for="agente" class="col-form-label">Paciente:</label>
                             <input required wire:model.defer="paciente" type="text" name="paciente"
-                                class="form-control" id="paciente">
+                                class="form-control" id="paciente" style="text-transform:uppercase;" value=""
+                                onkeyup="javascript:this.value=this.value.toUpperCase();">
                         </div>
                         <div class="form-group">
                             <label for="observaciones" class="col-form-label">Observaciones:</label>
                             <textarea wire:model.defer="observaciones" class="form-control" name="observaciones"
-                                id="observaciones"></textarea>
+                                id="observaciones" style="text-transform:uppercase;" value=""
+                                onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
                         </div>
                     </form>
                 </div>

@@ -6,7 +6,7 @@ use App\Models\Casos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CerrarCaso extends Controller
+class Caso extends Controller
 {
     public function edit($id) {
 
@@ -18,11 +18,17 @@ class CerrarCaso extends Controller
             session()->flash('message', 'Caso cerrado con éxito.');
             return redirect('/casos');
         }
-
     }
 
     public function update(Request $request, Casos $numero_orden){
         $caso = Casos::find($numero_ordenid);
         var_dump($numero_orden);
+    }
+
+    public function delete($id) {
+        $caso = Casos::find($id);
+        $caso->delete();
+        session()->flash('message', 'Caso eliminado correctamente.');
+        return redirect('/casos');
     }
 }

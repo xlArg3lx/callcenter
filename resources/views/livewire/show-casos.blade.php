@@ -5,6 +5,7 @@
         </div>
     @endif
     @include('modal_confirm')
+    @include('modal_confirmCaso_delete')
 
     <div class="table-responsive">
         <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
@@ -50,6 +51,11 @@
                         <td>
                             <a title="Editar" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"
                                 class=" btn btn-success waves-effect waves-light"> <i class="bi bi-hand-thumbs-up">
+                                </i>
+                            </a>
+
+                            <a title="Borrar" data-toggle="modal" data-target="#eliminarCaso{{ $item->id }}"
+                                class=" btn btn-danger waves-effect waves-light"> <i class="bi bi-trash">
                                 </i>
                             </a>
                         </td>
