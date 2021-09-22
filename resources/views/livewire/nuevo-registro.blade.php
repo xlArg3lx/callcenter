@@ -1,5 +1,9 @@
 <div>
-    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Filtrarllamadas"
+        data-whatever="@mdo"><i class="bi bi-search"></i> Filtrar llamadas</button>
+
+    @include('filtroLlamadas')
+
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i
             class="bi bi-plus-circle"></i> Nuevo registro</button>
 

@@ -5,6 +5,7 @@
         </div>
     @endif
     @include('modal_confirm')
+
     <div class="table-responsive">
         <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
             <thead>

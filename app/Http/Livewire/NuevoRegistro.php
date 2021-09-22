@@ -6,10 +6,41 @@ use App\Models\Agentes;
 use App\Models\TiposLlamadas;
 use Livewire\Component;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class NuevoRegistro extends Component
 {
     public $fecha, $tipo_llamada, $agente, $observaciones;
+
+    public $fecha_filtro;
+
+    public function resetInputFilter(){
+        $this->fecha_filtro = null;
+        $this->agente = null;
+    }
+
+    public function filtroLlamadas() {
+
+        $sql = Llamadas::where([
+            'fecha' => $this->fecha_filtro,
+            'agente' => $this->agente
+        ])->count();
+
+         $this->dispatchBrowserEvent('close-modal-filter');
+
+        $this->alert('success', 'Total llamadas '. $sql, [
+            'position' =>  'top-end',
+            'timer' =>  5000,
+            'toast' =>  true,
+            // 'text' =>  $this->fecha_filtro." ".$sql,
+            'confirmButtonText' =>  'Ok',
+            'cancelButtonText' =>  'Cancel',
+            'showCancelButton' =>  true,
+            'showConfirmButton' =>  false,
+      ]);
+
+
+    }
 
     public function NuevoRegistro()
     {

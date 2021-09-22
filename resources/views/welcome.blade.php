@@ -68,7 +68,8 @@
                                                 <div class="col mr-2">
                                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                         {{ $item->primer_nombre }} {{ $item->primer_apellido }}</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $agente_tres }}
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        {{ $agente_tres }}
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
