@@ -20,7 +20,6 @@ class CreateCasosTable extends Migration
             $table->string('paciente');
             $table->string('estado');
             $table->string('observaciones');
-            $table->string('seguimiento')->nullable();
             $table->timestamps();
         });
     }
