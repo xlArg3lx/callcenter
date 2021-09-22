@@ -16,6 +16,7 @@
                     <th>Paciente</th>
                     <th>Estado</th>
                     <th>Observaciones</th>
+                    <th>Seguimiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <th>Paciente</th>
                     <th>Estado</th>
                     <th>Observaciones</th>
+                    <th>Seguimiento</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
@@ -48,6 +50,7 @@
                             @endif
                         </td>
                         <td>{{ $item->observaciones }}</td>
+                        <td>{{ $item->seguimiento }}</td>
                         <td>
                             <a title="Editar" data-toggle="modal" data-target="#exampleModal{{ $item->id }}"
                                 class=" btn btn-success waves-effect waves-light"> <i class="bi bi-hand-thumbs-up">

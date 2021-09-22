@@ -10,13 +10,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <p>¿Seguro que deseas cerrar el caso #{{ $item->numero_orden }}?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a type="button" class="btn btn-danger" href="/cerrar_caso/{{ $item->id }}">Cerrar caso</a>
-                </div>
+                <form action="/cerrar_caso/{{ $item->id }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <p>¿Seguro que deseas cerrar el caso #{{ $item->numero_orden }}?</p>
+
+
+                        <div class="form-group">
+                            <label for="seguimiento" class="col-form-label">Observaciones adicionales:</label>
+                            <textarea class="form-control" name="seguimiento" id="seguimiento"></textarea>
+                            <input name="seguimiento" type="text">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a type="submit" class="btn btn-danger">Cerrar caso</a>
+                        <button type="submit"> JKHSKJDF</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

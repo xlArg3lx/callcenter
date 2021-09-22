@@ -8,21 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class Caso extends Controller
 {
-    public function edit($id) {
+    public function edit(Request $request, $id) {
+
+        $seguimiento = $request->input('seguimiento');
 
         if (DB::select('select estado from casos where estado = "Cerrado" and id = '.$id.'')) {
             session()->flash('error', 'El caso ya se encuentra en estado cerrado.');
             return redirect('/casos');
         }else {
-            DB::update('update casos set estado = "Cerrado" where id = '.$id.'');
+            DB::update('update casos set estado = "Cerrado", seguimiento = "'.$seguimiento.'" where id = '.$id.'');
             session()->flash('message', 'Caso cerrado con éxito.');
             return redirect('/casos');
         }
-    }
-
-    public function update(Request $request, Casos $numero_orden){
-        $caso = Casos::find($numero_ordenid);
-        var_dump($numero_orden);
     }
 
     public function delete($id) {

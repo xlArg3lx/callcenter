@@ -14,6 +14,7 @@ class Casos extends Model
         'numero_orden',
         'paciente',
         'estado',
-        'observaciones'
+        'observaciones',
+        'seguimiento'
     ];
 }

@@ -32,5 +32,5 @@ Route::get('/casos', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cerrar_caso/{id}', [App\Http\Controllers\Caso::class, 'edit'])->name('cerrar_caso');
+Route::post('/cerrar_caso/{id}', [App\Http\Controllers\Caso::class, 'edit'])->name('cerrar_caso');
 Route::get('/borrar_caso/{id}', [App\Http\Controllers\Caso::class, 'delete'])->name('borrar_caso');
