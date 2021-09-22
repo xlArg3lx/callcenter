@@ -29,14 +29,13 @@ class NuevoRegistro extends Component
          $this->dispatchBrowserEvent('close-modal-filter');
 
         $this->alert('success', 'Total llamadas '. $sql, [
-            'position' =>  'top-end',
+            'position' =>  'bottom-end',
             'timer' =>  5000,
             'toast' =>  true,
-            // 'text' =>  $this->fecha_filtro." ".$sql,
             'confirmButtonText' =>  'Ok',
             'cancelButtonText' =>  'Cancel',
-            'showCancelButton' =>  true,
-            'showConfirmButton' =>  false,
+            'showCancelButton' =>  false,
+            'showConfirmButton' =>  true,
       ]);
 
 
