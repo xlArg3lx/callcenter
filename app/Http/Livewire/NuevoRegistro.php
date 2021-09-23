@@ -28,17 +28,30 @@ class NuevoRegistro extends Component
 
          $this->dispatchBrowserEvent('close-modal-filter');
 
-        $this->alert('success', 'Total llamadas '. $sql, [
-            'position' =>  'bottom-end',
-            'timer' =>  5000,
-            'toast' =>  true,
-            'confirmButtonText' =>  'Ok',
-            'cancelButtonText' =>  'Cancel',
-            'showCancelButton' =>  false,
-            'showConfirmButton' =>  true,
-      ]);
+        if ($this->fecha_filtro == null && $this->agente == null ) {
 
+            $this->alert('error', 'Error al filtrar información', [
+                'position' =>  'bottom-end',
+                'timer' =>  5000,
+                'toast' =>  true,
+                'confirmButtonText' =>  'Ok',
+                'cancelButtonText' =>  'Cancel',
+                'showCancelButton' =>  false,
+                'showConfirmButton' =>  true,
+            ]);
 
+        } else {
+
+            $this->alert('success', 'Total llamadas '. $sql, [
+                'position' =>  'bottom-end',
+                'timer' =>  5000,
+                'toast' =>  true,
+                'confirmButtonText' =>  'Ok',
+                'cancelButtonText' =>  'Cancel',
+                'showCancelButton' =>  false,
+                'showConfirmButton' =>  true,
+            ]);
+        }
     }
 
     public function NuevoRegistro()
