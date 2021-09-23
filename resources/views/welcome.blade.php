@@ -17,7 +17,6 @@
             </div>
 
             <div class="row">
-
                 @foreach ($agentes as $item)
 
                     @if ($item->primer_nombre == 'Keyla' && $item->primer_apellido == 'Roca')
@@ -105,7 +104,6 @@
                         @endif
                     @endif
                 @endforeach
-
             </div>
 
             <livewire:show-registros />

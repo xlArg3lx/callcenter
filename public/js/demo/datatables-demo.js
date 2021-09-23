@@ -2,7 +2,7 @@
 $(document).ready(function() {
     $('#datatable').DataTable({
         "order": [
-            [0, "desc"]
+            [1, "desc"]
         ],
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
