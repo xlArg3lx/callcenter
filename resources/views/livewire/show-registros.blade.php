@@ -36,6 +36,11 @@
                                         @else
                                             @if ($item->tipo_llamada == 'Otro')
                                                 <span class="badge badge-secondary">{{ $item->tipo_llamada }}</span>
+                                            @else
+                                                @if ($item->tipo_llamada == 'Donante')
+                                                    <span class="badge badge-danger">{{ $item->tipo_llamada . ' ' }} <i
+                                                            class="fas fa-tint"></i></span>
+                                                @endif
                                             @endif
                                         @endif
                                     @endif

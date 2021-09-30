@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CerrarCaso;
 use App\Models\Agentes;
 use App\Models\Llamadas;
+use App\Models\LlamadasBanco;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +31,28 @@ Route::get('/casos', function() {
     return view('casos');
 });
 
+Route::get('/registros-banco', function() {
+    $today = Carbon::now()->format('Y-m-d');
+    $today_count = LlamadasBanco::where('fecha', $today)->count();
+    $agenda_today_count = LlamadasBanco::where([
+        'agendado' => 'SI',
+        'fecha' => $today
+    ])->count();
+    $llamadas_count = LlamadasBanco::all()->count();
+    $agentes = Agentes::all();
+    $agendado =  LlamadasBanco::where('agendado', 'SI')->count();
+    $agente =  LlamadasBanco::where('agente_id', 2)->count();
+    $agente_dos = LlamadasBanco::where('agente_id', 1)->count();
+    $agente_tres = LlamadasBanco::where('agente_id', 3)->count();
+    $agente_cuatro = LlamadasBanco::where('agente_id', 4)->count();
+    $total_llamadas = LlamadasBanco::all()->count();
+    $registros = LlamadasBanco::all();
+    return view('banco_sangre.registro-llamadas', compact('today', 'agenda_today_count', 'llamadas_count', 'today_count', 'agendado', 'agentes', 'agente', 'agente_dos', 'agente_tres', 'agente_cuatro', 'total_llamadas', 'registros'));
+})->name('banco_sangre');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/cerrar_caso/{id}', [App\Http\Controllers\Caso::class, 'edit'])->name('cerrar_caso');
 Route::get('/borrar_caso/{id}', [App\Http\Controllers\Caso::class, 'delete'])->name('borrar_caso');
+Route::post('/guardar', [App\Http\Controllers\LlamadasBancoController::class, 'store'])->name('guardar_registro_banco');
