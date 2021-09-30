@@ -10,15 +10,9 @@
 
         @include('banco_sangre.modal-registro')
 
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        @if (session()->has('error'))
+        @if (session()->has('message'))
             <div class="alert alert-success">
-                {{ session('error') }}
+                {{ session('message') }}
             </div>
         @endif
 

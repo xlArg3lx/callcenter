@@ -22,6 +22,7 @@ class LlamadasBancoController extends Controller
         $data->agente_id = $request->input('agente_id');
 
         $data->save();
-        return redirect('gracias');
+        session()->flash('message', 'Registro ingresado correctamente.');
+        return redirect('/registros-banco');
     }
 }
