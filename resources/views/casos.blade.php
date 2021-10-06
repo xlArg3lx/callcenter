@@ -12,7 +12,7 @@
                 @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}
-                    </div>
+                    </divs>
                 @endif
             </div>
             <livewire:show-casos />

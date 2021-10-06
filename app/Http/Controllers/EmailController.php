@@ -14,14 +14,15 @@ class EmailController extends Controller
         $today = Carbon::now()->format('m-d');
 
         $subject = "Cierre de actividades"." ".$today;
-        $for = "socialn27@gmail.com";
-        $copia = "callcenterfgeb@gmail.com";
+        $for = "gerenciadeproyectos@fungrupoestudio.org";
+        $copia = "asistentegerencia@ipssanlucas.com.co";
         Mail::send('email', $request->all(), function($msj) use ($subject, $for, $copia) {
             $msj->from("callcenter@gmail.com", "Argenedis Alvarez");
             $msj->subject($subject);
             $msj->to($for);
             $msj->cc($copia);
         });
+        session()->flash('message', 'Correo enviado correctamente.');
         return redirect()->back();
     }
 }
