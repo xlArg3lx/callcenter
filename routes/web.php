@@ -56,3 +56,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/cerrar_caso/{id}', [App\Http\Controllers\Caso::class, 'edit'])->name('cerrar_caso');
 Route::get('/borrar_caso/{id}', [App\Http\Controllers\Caso::class, 'delete'])->name('borrar_caso');
 Route::post('/guardar', [App\Http\Controllers\LlamadasBancoController::class, 'store'])->name('guardar_registro_banco');
+
+Route::post('/contactar', [App\Http\Controllers\EmailController::class, 'contact'])->name('contact');
+
+Route::get('/contactar', function () {
+    $today = Carbon::now()->format('Y-m-d');
+    return view('email', compact('today'));
+});
+
+Route::get('/test', function () {
+    $today = Carbon::now()->format('Y-m-d');
+    $call_today_count_rf = Llamadas::where('fecha', $today)->count();
+    $agendado =  LlamadasBanco::where([
+        'agendado' => 'SI',
+        'fecha' => $today
+    ])->count();
+    $call_today_count = LlamadasBanco::where([
+        'fecha' => $today
+    ])->count();
+    return view('test', compact('today', 'call_today_count', 'call_today_count_rf', 'agendado'));
+})->name('cierre_actividades'); //Esta ruta la ponemos en la raiz para que nada mas ejecutar nuestra aplicación aparezca nuestro formulario

@@ -16,6 +16,9 @@
                 <a class="nav-link" href="{{ route('banco_sangre') }}">Banco sangre</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('cierre_actividades') }}">Cierre actividades</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link disabled" href="#">Deshabilitado</a>
             </li>
         </ul>
