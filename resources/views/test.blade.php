@@ -20,14 +20,14 @@
     {{ csrf_field() }}
     @method('POST')
 
-    <div>
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-                </divs>
-        @endif
-    </div>
     <div class="container-sm">
+        <div>
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                    </divs>
+            @endif
+        </div>
         <h3>Cierre diario de actividades</h3>
         <input type="text" name="today" readonly hidden value="{{ $today }}">
         <div class="mb-3">
